@@ -5,9 +5,13 @@ var T = new Twit(config);
 
 var params={
  q: 'kapil sharma', 
- count:3
+ count:10
 }
-T.get('search/tweets',params, function(err, data, response) {
-  console.log(data)
-})
+T.get('search/tweets',params,gotData);
+function gotData(err,data,response){
+	var tweets=data.statuses;
+	for(var i=0;i<tweets.length;i++){
+		console.log(tweets[i].text);
+	}
+}
 
